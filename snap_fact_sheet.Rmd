@@ -1,0 +1,174 @@
+```{r, echo=FALSE}
+state <- subgroup$state
+pres_title <- toupper(subgroup$state)
+
+```
+
+---
+title: "`r pres_title` FACTS"
+latex_engine: xelatex
+geometry: left = 1cm, right = 1cm, top = 2cm, bottom = 1cm
+header-includes: 
+   \usepackage{fancyhdr} 
+   \usepackage{graphicx} 
+   \usepackage{eurosym} 
+   \usepackage{booktabs,xcolor} 
+   \usepackage{graphicx}
+   \graphicspath{ {../img/} }
+   \usepackage{fetamont}
+   \usepackage[T1]{fontenc}
+   \usepackage{CormorantGaramond}
+   \usepackage[T1]{fontenc}
+   \usepackage[notextcomp]{kpfonts}
+   \usepackage[T1]{fontenc}
+   \usepackage{pandora}
+   \usepackage[T1]{fontenc}
+   \pagestyle{fancy} 
+   \fancyhf{}
+   \usepackage{wrapfig}
+   \usepackage{tikz}
+   \usepackage{xcolor}
+   \usepackage{color}
+   \definecolor{slate}{RGB}{114, 151, 169}
+   \definecolor{fr_green}{RGB}{23, 163, 74}
+   \definecolor{fr_rust}{RGB}{203, 108, 22}
+   \definecolor{fr_blue}{RGB}{0, 108, 172}
+   \definecolor{white}{RGB}{255,255,255}
+   \usepackage{titling}
+   \pretitle{\begin{center}\vspace*{-3cm}\hspace*{3.5cm}\bfseries\fontsize{30}{30}\selectfont\textcolor{fr_green}}
+   \posttitle{\par\end{center}\vskip 1cm}
+   \addtolength{\headheight}{10mm}
+   \chead{\includegraphics[width=40cm]{../img/SNAPFracFacts_Header1.jpg}\vskip 1mm}
+   \rfoot{Page \thepage} 
+   \fancypagestyle{plain}{\pagestyle{fancy}}
+output:
+    pdf_document
+mainfont: kpfonts
+fontsize: 12
+classoption: a4paper
+---
+
+```{r, echo=FALSE}
+snap_pct_metro <- round((subgroup$state_pct_hh_snap_metro * 100), 0)
+snap_pct_micro <- round((subgroup$state_pct_hh_snap_micro * 100), 0)
+snap_pct_rural <- round((subgroup$state_pct_hh_snap_rural * 100), 0)
+
+snap_share_metro <- round((1 / subgroup$state_pct_hh_snap_metro), 0)
+snap_share_micro <- round((1 / subgroup$state_pct_hh_snap_micro), 0)
+snap_share_rural <- round((1 / subgroup$state_pct_hh_snap_rural), 0)
+
+num_tanfhh <- prettyNum(round(subgroup$num_tanfhh, 0), big.mark = ",")
+pct_tanfhh <- round((subgroup$pct_tanfhh * 100), 0)
+pct_snap_w_worker <- round((subgroup$pct_snap_w_worker * 100), 0)
+
+pct_kidhh <- round((subgroup$pct_kidhh * 100), 0)
+snap_share_kidhh <- round((1 / subgroup$pct_kidhh), 0)
+
+numparthh <- prettyNum(round(subgroup$numparthh, 0), big.mark = ",")
+numpart <- prettyNum(round(subgroup$numpart, 0), big.mark = ",")
+```
+\fontfamily{kpfonts}
+\fontsize{18}{18}
+\color{fr_blue}
+\fontseries{b}
+\selectfont
+
+In `r state`
+
+\begin{flushleft}
+  \begin{tikzpicture}
+      \draw (-20, 4) node[inner sep=0] {\includegraphics[width=40cm]{../img/BULLETS.jpg}};
+      \draw (-10.8, 4.3) node {\color{black} {\normalfont\fontsize{10}{10}\selectfont SNAP reaches `r numparthh` households with `r numpart` individuals in an average month (October 2019 - February 2020).1}};
+      \draw (-11.45, 3.7) node {\color{black} {\normalfont\fontsize{10}{10}\selectfont SNAP helps 1 in `r snap_share_metro` metro, 1 in `r snap_share_micro` small town, and 1 in `r snap_share_rural` rural households afford healthy, nutritious meals.2}};
+  \end{tikzpicture}
+\end{flushleft}
+
+\fontfamily{kpfonts}
+\fontsize{14}{14}
+\color{fr_blue}
+\fontseries{b}
+\selectfont
+
+Percent of households  
+  
+participating in SNAP^3^
+
+\fontfamily{kpfonts}
+\fontsize{12}{12}
+\color{black}
+\fontseries{b}
+\selectfont
+
+\begin{center}
+  \begin{tikzpicture}
+      \draw (0, 7) node[inner sep=0] {\includegraphics[width=40cm]{../img/Percent of households participating in SNAP_Graphic.jpg}};
+      \draw (-7.2, 6.55) node {\color{white} {\bfseries\fontsize{12}{12}\selectfont `r pres_title`}};
+      \draw (-2.4, 6.55) node {\color{white} {\normalfont\fontsize{12}{12}\selectfont `r snap_pct_metro`\%}};
+      \draw (2.4, 6.55) node {\color{white} {\normalfont\fontsize{12}{12}\selectfont `r snap_pct_micro`\%}};
+      \draw (7.3, 6.55) node {\color{white} {\normalfont\fontsize{12}{12}\selectfont `r snap_pct_rural`\%}};
+      \draw (-7.2, 5.5) node {\color{white} {\bfseries\fontsize{12}{12}\selectfont NATIONALLY}};
+      \draw (-2.4, 5.5) node {\color{white} {\normalfont\fontsize{12}{12}\selectfont 11\%}};
+      \draw (2.4, 5.5) node {\color{white} {\normalfont\fontsize{12}{12}\selectfont 13\%}};
+      \draw (7.3, 5.5) node {\color{white} {\normalfont\fontsize{12}{12}\selectfont 14\%}};
+  \end{tikzpicture}
+\end{center}
+
+\fontfamily{kpfonts}
+\fontsize{8}{8}
+\color{black}
+\fontseries{b}
+\selectfont
+
+^1^USDA, Characteristics of Supplemental Nutrition Assistance Program Households: Fiscal Year 2020.  
+
+^2^For the purpose of this analysis, “Metro Areas” are metropolitan statistical areas as delineated by the Office of Management and Budget (OMB), each of which contains at least one Census Bureau-delineated urbanized area of 50,000 or more people; “Small Towns” are micropolitan statistical areas as delineated by OMB, each containing at least one Census Bureau-delineated urban cluster of between 10,000 and 50,000 people; and “Rural Areas” are non-metropolitan and non-micropolitan areas.  
+
+^3^American Community Survey 2021 five-year estimates (2017-2021).
+
+\begin{center}
+  \color{fr_green}
+  \linethickness{0.1mm}\line(1,0){900}
+\end{center}
+
+\fontfamily{kpfonts}
+\fontsize{12}{12}
+\color{black}
+\fontseries{b}
+\selectfont
+
+\begin{flushleft}
+  \begin{tikzpicture}
+      \draw (0, 4) node[inner sep=0] {\includegraphics[width=40cm]{../img/3 BULLETS.jpg}};
+      \draw (5.8, 4.6) node {\color{black} {\normalfont\fontsize{10}{10}\selectfont About `r pct_snap_w_worker`\% of SNAP families had at least one working adult in the past 12 months.}};
+      \draw (5.8, 4) node {\color{black} {\normalfont\fontsize{10}{10}\selectfont A very small number of SNAP households (`r pct_tanfhh`\% or about `r num_tanfhh`) participate in TANF, making SNAP a critical safety net for families with children.}};
+      \draw (5.8, 3.4) node {\color{black} {\normalfont\fontsize{10}{10}\selectfont About 1 in `r snap_share_kidhh`  
+SNAP households  
+included children.}};
+  \end{tikzpicture}
+\end{flushleft}
+
+\begin{center}
+  \begin{tikzpicture}
+      \draw (0, 6) node[inner sep=0] {\includegraphics[width=40cm]{../img/SNAP FamiliesHouseholds_Graphic.jpg}};
+      \draw (-7.2, 6.05) node {\color{white} {\bfseries\fontsize{12}{12}\selectfont `r pres_title`}};
+      \draw (-2.4, 6.05) node {\color{white} {\normalfont\fontsize{12}{12}\selectfont `r pct_snap_w_worker`\%}};
+      \draw (2.4, 6.05) node {\color{white} {\normalfont\fontsize{12}{12}\selectfont `r pct_tanfhh`\%}};
+      \draw (7.3, 6.05) node {\color{white} {\normalfont\fontsize{12}{12}\selectfont `r pct_kidhh`\%}};
+      \draw (-7.2, 4.95) node {\color{white} {\bfseries\fontsize{12}{12}\selectfont NATIONALLY}};
+      \draw (-2.4, 4.95) node {\color{white} {\normalfont\fontsize{12}{12}\selectfont 80\%}};
+      \draw (2.4, 4.95) node {\color{white} {\normalfont\fontsize{12}{12}\selectfont 4\%}};
+      \draw (7.3, 4.95) node {\color{white} {\normalfont\fontsize{12}{12}\selectfont 37\%}};
+  \end{tikzpicture}
+\end{center}
+
+Source for working families data: American Community Survey 2021 five-year estimates (2017-2021).  
+
+Source for TANF and children data: USDA, Characteristics of Supplemental Nutrition Assistance Program Households: Fiscal Year 2020.  
+
+^4^Based on the Census Bureau definition, family consists of a householder and one or more other people living in the same household who are related to the householder by birth, marriage, or adoption.
+
+\begin{center}
+  \begin{tikzpicture}
+      \draw (0, 0) node[inner sep=0] {\includegraphics[width=40cm]{../img/SNAPFracFacts_Footer.jpg}};
+  \end{tikzpicture}
+\end{center}
